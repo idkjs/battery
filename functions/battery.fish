@@ -1,4 +1,4 @@
 #!/usr/bin/env fish
-set script_dir (realpath (dirname (status --current-filename)))
-
-bass source $script_dir/battery
+function battery
+    pmset -g batt | grep -E "([0-9]+\%).*" -o --colour=auto | cut -f1 -d';'
+end
